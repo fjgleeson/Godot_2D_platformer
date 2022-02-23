@@ -1,2 +1,2 @@
-# Godot_2D_RPG
-2D turn-based boss rush (oh yeah also all stats are random every run :) )
+# Godot_2D_Platformer
+2D platformer developed in Godot 
