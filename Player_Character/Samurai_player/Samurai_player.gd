@@ -1,9 +1,11 @@
 extends KinematicBody2D
 signal health_updated(health)
-signal killed()
 const UP = Vector2(0, -0.5)
-const GRAVITY = 10
+
+const GRAVITY = 14
+
 const MAXFALLSPEED = 200
+
 const MAXSPEED = 150
 
 const ACCEL = 20
@@ -18,8 +20,11 @@ var motion = Vector2()
 
 var facing_right = true
 
-var isAttacking = false;
+var isAttacking = false
 
+var jumps = 0
+
+var is_jumping = false
 
 func damage(amount):
 	_set_health(health - amount)
@@ -56,7 +61,10 @@ func _physics_process(delta):
 			
 		else:
 			$AnimatedSprite.scale.x = -1
+			#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
 			
+			
+		
 		motion.x = clamp(motion.x,-MAXSPEED,MAXSPEED)
 		
 		if Input.is_action_pressed("right") && isAttacking == false:
@@ -64,13 +72,12 @@ func _physics_process(delta):
 			facing_right = true
 			$AnimatedSprite.play("run")
 			$Slash/CollisionShape2D.disabled = true
-			#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
+			
 		elif Input.is_action_pressed("left") && isAttacking == false:
 			motion.x -= ACCEL
 			facing_right = false
 			$AnimatedSprite.play("run")
 			$Slash/CollisionShape2D.disabled = true
-			#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
 		else:
 			motion.x = lerp(motion.x,0,0.2)
 			#motion.x = 0;
@@ -79,35 +86,50 @@ func _physics_process(delta):
 				$AnimatedSprite.play("idle")
 				$Slash/CollisionShape2D.disabled = true
 		if Input.is_action_just_pressed("mouse_left_click"):
-			
-			if(facing_right == false):
-				isAttacking = true
-				$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
-				$AnimatedSprite.play("attack1")
+			if is_jumping == false:
+				if(facing_right == false):
+					isAttacking = true
+					#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
+					$AnimatedSprite.play("attack1")
 				
-				$Slash/CollisionShape2D.disabled = false
-			else:
+					$Slash/CollisionShape2D.disabled = false
+				else:
+					isAttacking = true
+					$AnimatedSprite.play("attack1")
 				
-				$AnimatedSprite.play("attack1")
-				isAttacking = true
-				$Slash/CollisionShape2D.disabled = false
+					$Slash/CollisionShape2D.disabled = false
 				
 				
 		if Input.is_action_just_pressed("mouse_right_click"):
-			$AnimatedSprite.play("attack2")
-			isAttacking = true
-			$Slash/CollisionShape2D.disabled = false
+			if is_jumping == false:
+				$AnimatedSprite.play("attack2")
+				isAttacking = true
+				$Slash/CollisionShape2D.disabled = false
 			
 			
 		if is_on_floor():
+			is_jumping = false
 			if Input.is_action_just_pressed("jump"):
 				motion.y = -JUMP
+				if jumps > 0:
+					jumps = 0
 		if !is_on_floor():
 			if motion.y <0:
+				is_jumping = true
 				$AnimatedSprite.play("jump")
 			elif motion.y > 0:
+				is_jumping = true
 				$AnimatedSprite.play("fall")
-			
+				
+				
+			if jumps == 0:
+				if Input.is_action_just_pressed("jump"):
+					is_jumping = true
+					$AnimatedSprite.play("jump")
+					motion.y = -JUMP
+					jumps = 1
+					
+					
 		motion = move_and_slide(motion,UP)
 	else:
 		motion = Vector2(0,0)
