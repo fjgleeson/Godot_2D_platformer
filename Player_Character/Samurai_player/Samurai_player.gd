@@ -1,14 +1,14 @@
 extends KinematicBody2D
 signal health_updated(health)
-const UP = Vector2(0, -0.5)
+const UP = Vector2(0, -0.70)
 
 const GRAVITY = 14
 
 const MAXFALLSPEED = 200
 
-const MAXSPEED = 150
+const MAXSPEED = 250
 
-const ACCEL = 20
+const ACCEL = 30
 
 const JUMP = 300
 
@@ -29,10 +29,7 @@ var is_jumping = false
 func damage(amount):
 	_set_health(health - amount)
 
-func kill():
-	pass
-	
-	
+
 func _set_health(value):
 	var prev_health = health
 	health = clamp(value, 0, max_health)
@@ -40,9 +37,7 @@ func _set_health(value):
 		emit_signal("health_updated", health)
 		
 
-func _ready():
-	pass # Replace with function body.
-	
+
 	
 func contact():
 		damage(1)
@@ -61,7 +56,7 @@ func _physics_process(delta):
 			
 		else:
 			$AnimatedSprite.scale.x = -1
-			#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
+			
 			
 			
 		
@@ -71,43 +66,53 @@ func _physics_process(delta):
 			motion.x += ACCEL
 			facing_right = true
 			$AnimatedSprite.play("run")
-			$Slash/CollisionShape2D.disabled = true
+			$Slash/right.disabled = true
+			$Slash/left.disabled = true
 			
 		elif Input.is_action_pressed("left") && isAttacking == false:
 			motion.x -= ACCEL
 			facing_right = false
 			$AnimatedSprite.play("run")
-			$Slash/CollisionShape2D.disabled = true
+			$Slash/right.disabled = true
+			$Slash/left.disabled = true
 		else:
-			motion.x = lerp(motion.x,0,0.2)
-			#motion.x = 0;
+			motion.x = lerp(motion.x,0,0.6)
 			
 			if (isAttacking == false):
 				$AnimatedSprite.play("idle")
-				$Slash/CollisionShape2D.disabled = true
+				$Slash/right.disabled = true
+				$Slash/left.disabled = true
 		if Input.is_action_just_pressed("mouse_left_click"):
 			if is_jumping == false:
+				isAttacking = true
 				if(facing_right == false):
-					isAttacking = true
-					#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
+					
+					#self.position.x -= 20
 					$AnimatedSprite.play("attack1")
 				
-					$Slash/CollisionShape2D.disabled = false
+					$Slash/left.disabled = false
 				else:
-					isAttacking = true
 					$AnimatedSprite.play("attack1")
 				
-					$Slash/CollisionShape2D.disabled = false
+					$Slash/right.disabled = false
 				
 				
 		if Input.is_action_just_pressed("mouse_right_click"):
 			if is_jumping == false:
-				$AnimatedSprite.play("attack2")
 				isAttacking = true
-				$Slash/CollisionShape2D.disabled = false
-			
-			
+				if(facing_right == false):
+					
+					#$Slash/CollisionShape2D.position.x = $Slash/CollisionShape2D.position.x * -1
+					$AnimatedSprite.play("attack2")
+				
+					$Slash/left.disabled = false
+				else:
+					
+					$AnimatedSprite.play("attack2")
+				
+					$Slash/right.disabled = false
 		if is_on_floor():
+			
 			is_jumping = false
 			if Input.is_action_just_pressed("jump"):
 				motion.y = -JUMP
@@ -140,11 +145,13 @@ func _physics_process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	if "Fire" in body.name:
-		body.contact()
+	if "Enemy" in body.name:
+		body.damage(1)
+		
 
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "attack1" || $AnimatedSprite.animation == "attack2":
 		isAttacking = false; # Replace with function body.
-		$Slash/CollisionShape2D.disabled = true
+		$Slash/right.disabled = true
+		$Slash/left.disabled = true

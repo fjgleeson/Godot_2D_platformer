@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Samurai_player/Sprite/Death.png" type="Texture" id=1]
 [ext_resource path="res://Samurai_player/Sprite/Idle.png" type="Texture" id=2]
@@ -9,8 +9,8 @@
 [ext_resource path="res://Samurai_player/Sprite/Run.png" type="Texture" id=7]
 [ext_resource path="res://Samurai_player/Sprite/Fall.png" type="Texture" id=8]
 
-[sub_resource type="CapsuleShape2D" id=1]
-height = 44.0
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 10, 29.5 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
@@ -122,46 +122,6 @@ flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 200, 0, 200, 200 )
 
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 200, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 200, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 400, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 600, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 800, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1000, 0, 200, 200 )
-
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 7 )
@@ -202,6 +162,46 @@ flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1400, 0, 200, 200 )
 
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1000, 0, 200, 200 )
+
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
@@ -224,6 +224,11 @@ animations = [ {
 "name": "fall",
 "speed": 12.0
 }, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+}, {
 "frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": false,
 "name": "jump",
@@ -233,23 +238,21 @@ animations = [ {
 "loop": false,
 "name": "attack1",
 "speed": 30.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "run",
-"speed": 12.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 10, 26.5 )
 
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 10, 26.5 )
+
 [node name="Samurai_player" type="KinematicBody2D"]
-position = Vector2( 200, 24 )
+position = Vector2( 166, 24 )
 script = ExtResource( 5 )
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( -6, 72 )
-shape = SubResource( 1 )
+position = Vector2( -6, 74.5 )
+shape = SubResource( 43 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -0.626, 60 )
@@ -260,14 +263,19 @@ zoom = Vector2( 0.403, 0.269 )
 position = Vector2( -6, 79 )
 scale = Vector2( 1, 1.14 )
 frames = SubResource( 10 )
-animation = "attack1"
-frame = 4
+animation = "killed"
+frame = 5
+playing = true
 
 [node name="Slash" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slash"]
+[node name="right" type="CollisionShape2D" parent="Slash"]
 position = Vector2( 61, 70.5 )
 shape = SubResource( 41 )
+
+[node name="left" type="CollisionShape2D" parent="Slash"]
+position = Vector2( -72, 70.5 )
+shape = SubResource( 42 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Slash" to="." method="_on_Area2D_body_entered"]
