@@ -13,15 +13,13 @@ export (float) var max_health = 1
 
 onready var health = max_health setget _set_health
 
-onready var t = get_node("Timer")
-
 var motion = Vector2()
 
 var look = 1
 
 var elapsed_seconds = 0
-var max_seconds = 3
 
+var despawn_time = 3
 
 
 func damage(amount):
@@ -41,7 +39,6 @@ func _set_health(value):
 
 func contact():
 		damage(1)
-		
 
 
 func _physics_process(delta):
@@ -70,7 +67,7 @@ func _physics_process(delta):
 		$hitbox/CollisionShape2D.disabled = true
 		
 		elapsed_seconds += delta
-		if elapsed_seconds > max_seconds:
+		if elapsed_seconds > despawn_time:
 			elapsed_seconds = 0
 			queue_free()
 
@@ -80,6 +77,4 @@ func _on_hitbox_body_entered(body):
 		body.contact() # Replace with function body.
 
 
-func _on_Timer_timeout():
-	if(health == 0):
-		queue_free()
+
