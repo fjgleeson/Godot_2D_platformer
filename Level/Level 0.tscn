@@ -1,20 +1,59 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Level/Level 0.gd" type="Script" id=1]
 [ext_resource path="res://Tile/Test_Area/tempFloor.tres" type="TileSet" id=2]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemy/Fire Worm.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Samurai_player/Samurai_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy/Fire Worm/Fire Worm Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy/Slime/Big Slime/Big Slime Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy/Skeleton/Skeleton Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Slime/Slime Enemy.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1671.59, 69.5625 )
 
 [node name="Level 0" type="Node2D"]
+position = Vector2( 377, 26 )
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -786430, 0, 0, -786429, 0, 0, -786428, 0, 0, -786427, 0, 0, -786426, 0, 0, -786425, 0, 0, -786424, 0, 0, -786423, 0, 0, -786422, 0, 0, -786421, 0, 0, -786420, 0, 0, -786419, 0, 0, -786418, 0, 0, -786417, 0, 0, -720880, 0, 0, -720879, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -720873, 0, 0, -720872, 0, 0, -655335, 0, 0, -655334, 0, 0, -589797, 0, 0, -589796, 0, 0, -524260, 0, 0, -524259, 0, 0, -524258, 0, 0, -458722, 0, 0, -327697, 0, 0, -262161, 0, 0, -262160, 0, 0, -196624, 0, 0, -131088, 0, 0, -196582, 0, 0, -65552, 0, 0, -65551, 0, 0, -131046, 0, 0, -15, 0, 0, -65510, 0, 0, -65424, 0, 0, 65521, 0, 0, 65522, 0, 0, 26, 0, 0, 131058, 0, 0, 131059, 0, 0, 65562, 0, 0, 196596, 0, 0, 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 131098, 0, 0, 131099, 0, 0, 131176, 0, 0, 131184, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 196610, 0, 0, 196614, 0, 0, 196618, 0, 0, 196622, 0, 0, 196626, 0, 0, 196635, 0, 0, 262162, 0, 0, 262170, 0, 0, 262171, 0, 0, 327706, 0, 0, 327784, 0, 0, 327792, 0, 0, 327814, 0, 0, 393224, 0, 0, 458768, 0, 0, 524312, 0, 0, 524320, 0, 0, 524328, 0, 0, 524336, 0, 0, 524344, 0, 0, 524352, 0, 0, 524360, 0, 0, 524368, 0, 0, 524376, 0, 0, 524384, 0, 0, 524392, 0, 0, 524400, 0, 0, 524408, 0, 0, 524424, 0, 0, 655376, 0, 0, 720920, 0, 0, 720928, 0, 0, 720936, 0, 0, 720944, 0, 0, 720952, 0, 0, 720960, 0, 0, 720968, 0, 0, 720976, 0, 0, 720984, 0, 0, 720992, 0, 0, 721000, 0, 0, 721008, 0, 0, 721016, 0, 0, 721018, 0, 0, 721025, 0, 0, 983160, 0, 0 )
+tile_data = PoolIntArray( -63310282, 0, 0, -63113674, 0, 0, -62917066, 0, 0, -62720458, 0, 0, -62523850, 0, 0, -62327242, 0, 0, -62261706, 0, 0, -62261670, 0, 0, -62261626, 0, 0, -62261578, 0, 0, -62065098, 0, 0, -62065090, 0, 0, -62065082, 0, 0, -62065074, 0, 0, -62065066, 0, 0, -62065058, 0, 0, -62065050, 0, 0, -62065042, 0, 0, -62065034, 0, 0, -62065026, 0, 0, -62065018, 0, 0, -62065010, 0, 0, -62065002, 0, 0, -62064994, 0, 0, -62064986, 0, 0, -62064978, 0, 0, -62064962, 0, 0, -62064954, 0, 0, -62064946, 0, 0, -62064938, 0, 0, -62064930, 0, 0, -62064914, 0, 0, -62064906, 0, 0, -62064898, 0, 0, -62064890, 0, 0, -62064882, 0, 0, -62064874, 0, 0, -61868490, 0, 0, -61868322, 0, 0, -61868306, 0, 0, -61671882, 0, 0, -61671714, 0, 0, -61671698, 0, 0, -61475274, 0, 0, -61475098, 0, 0, -61278666, 0, 0, -61082058, 0, 0, -60885450, 0, 0, -60688842, 0, 0, -60492234, 0, 0, -60295626, 0, 0, -60099018, 0, 0, -327700, 0, 0, -393180, 0, 0, -131092, 0, 0, -196572, 0, 0, 65516, 0, 0, 36, 0, 0, 262108, 0, 0, 262116, 0, 0, 262124, 0, 0, 262132, 0, 0, 262140, 0, 0, 196612, 0, 0, 196620, 0, 0, 196628, 0, 0, 196636, 0, 0, 196644, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -79835, -30373 )
+
+[node name="Fire Worm Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( -77312, -30283 )
+
+[node name="Slime Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( -77704, -30285 )
+
+[node name="Skeleton Enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( -73629, -30291 )
+
+[node name="Death Zone" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Death Zone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Zone/Area2D"]
+position = Vector2( -72606.6, -29967 )
+shape = SubResource( 1 )
+
+[node name="Skeleton Enemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -78125, -30298 )
+
+[node name="Fire Worm Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -78742, -30289 )
+
+[node name="Slime Enemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -75577, -30284 )
+
+[node name="Slime Enemy3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -72863, -30246 )
 
 [node name="Fire Worm" parent="." instance=ExtResource( 4 )]
-position = Vector2( 696, 56 )
+position = Vector2( -79100, -30293 )
+
+[connection signal="body_shape_entered" from="Death Zone/Area2D" to="." method="_on_Area2D_body_shape_entered"]
