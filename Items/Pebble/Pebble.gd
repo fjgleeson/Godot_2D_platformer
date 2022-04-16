@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 
-const UP = Vector2(0, -6)
+const UP = Vector2(0, -2)
 
 
 var GRAVITY = 10
@@ -26,15 +26,8 @@ func _physics_process(delta):
 		
 		motion.x = clamp(motion.x,-MAXSPEED,MAXSPEED)
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+func _on_Area2D_body_entered(body):
+	if "Player" in body.name:
+		body.damage(1)
