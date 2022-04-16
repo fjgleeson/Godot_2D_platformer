@@ -3,13 +3,20 @@
 [ext_resource path="res://Menus/Menu.gd" type="Script" id=1]
 
 [node name="Menu" type="Control"]
-anchor_top = 1.0
+anchor_left = 0.499
+anchor_top = 0.998
+anchor_right = 0.499
 anchor_bottom = 1.0
-margin_top = -600.0
-margin_right = 1024.0
+margin_left = -512.976
+margin_top = -599.8
+margin_right = 512.024
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 601.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1025.0, 444.0 ]
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -18,8 +25,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -39.0
-margin_top = -80.0
+margin_top = -197.0
 margin_right = 39.0
+margin_bottom = -117.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
