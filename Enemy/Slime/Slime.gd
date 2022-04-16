@@ -71,7 +71,7 @@ func _on_detection_zone_body_entered(body):
 
 func _on_detection_zone_body_exited(body):
 	if "Player" in body.name:
-		player = null # Replace with function body.
+		player = null 
 func damage(amount):
 	_set_health(health - amount)
 	

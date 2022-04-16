@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Enemy/Skeleton/Sprite/Attack2.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/Skeleton/Skeleton Enemy.gd" type="Script" id=6]
@@ -70,46 +70,6 @@ flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1050, 0, 150, 150 )
 
-[sub_resource type="AtlasTexture" id=51]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=52]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 150, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=53]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 300, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=54]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 450, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=55]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 600, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=56]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 750, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 900, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=58]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1050, 0, 150, 150 )
-
 [sub_resource type="AtlasTexture" id=47]
 flags = 4
 atlas = ExtResource( 8 )
@@ -150,6 +110,46 @@ flags = 4
 atlas = ExtResource( 9 )
 region = Rect2( 450, 0, 150, 150 )
 
+[sub_resource type="AtlasTexture" id=51]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 150, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 300, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 450, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 750, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 900, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1050, 0, 150, 150 )
+
 [sub_resource type="SpriteFrames" id=29]
 animations = [ {
 "frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
@@ -162,11 +162,6 @@ animations = [ {
 "name": "Attack",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
-"loop": false,
-"name": "Attack2",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
 "loop": false,
 "name": "Death",
@@ -176,22 +171,18 @@ animations = [ {
 "loop": true,
 "name": "Walk",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": false,
+"name": "Attack2",
+"speed": 10.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=64]
-extents = Vector2( 23.5, 21 )
-
-[sub_resource type="RectangleShape2D" id=65]
-extents = Vector2( 23.5, 21 )
 
 [sub_resource type="RectangleShape2D" id=59]
 extents = Vector2( 384.5, 25.875 )
 
-[sub_resource type="RectangleShape2D" id=66]
-extents = Vector2( 70.75, 26 )
-
 [sub_resource type="RectangleShape2D" id=67]
-extents = Vector2( 16.5, 26 )
+extents = Vector2( 18, 26 )
 
 [node name="Skeleton Enemy" type="KinematicBody2D"]
 script = ExtResource( 6 )
@@ -210,34 +201,18 @@ frames = SubResource( 29 )
 animation = "Attack"
 frame = 6
 
-[node name="Swing Box" type="Area2D" parent="."]
-
-[node name="right" type="CollisionShape2D" parent="Swing Box"]
-position = Vector2( 50, -5 )
-shape = SubResource( 64 )
-
-[node name="left" type="CollisionShape2D" parent="Swing Box"]
-position = Vector2( -44.5, -5 )
-shape = SubResource( 65 )
-
 [node name="detection zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection zone"]
 position = Vector2( -0.5, -0.125 )
 shape = SubResource( 59 )
 
-[node name="Range" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
-position = Vector2( 3.25, 0 )
-shape = SubResource( 66 )
-
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 2.5, 0 )
+position = Vector2( 3, 0 )
 shape = SubResource( 67 )
 
-[connection signal="body_entered" from="Swing Box" to="." method="_on_Swing_Box_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="detection zone" to="." method="_on_detection_zone_body_entered"]
-[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

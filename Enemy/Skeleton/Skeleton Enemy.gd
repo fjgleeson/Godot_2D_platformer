@@ -5,7 +5,7 @@ const UP = Vector2(0, -0.5)
 const GRAVITY = 10
 const MAXFALLSPEED = 200
 const MAXSPEED = 250
-const ACCEL = 200
+const ACCEL = 170
 const JUMP = 350
 
 export (float) var max_health = 1
@@ -36,12 +36,12 @@ func _physics_process(delta):
 				$AnimatedSprite.play("Walk")
 				player_direction.y = 0
 				$AnimatedSprite.flip_h = false
-				look = 1
+				
 			else:
 				player_direction.y = 0
 				$AnimatedSprite.flip_h = true
 				$AnimatedSprite.play("Walk")
-				look = 0
+				
 			
 			
 			move_and_slide(ACCEL * player_direction.normalized())
@@ -50,15 +50,13 @@ func _physics_process(delta):
 		else:
 			$AnimatedSprite.play("Idle")
 			
-		$"Swing Box/left".disabled = true
-		$"Swing Box/right".disabled = true
+			
 	else:
 		
 		motion = Vector2(0,0)
 		$AnimatedSprite.play("Death")
 		$CollisionShape2D.disabled = true
-		$"Swing Box/left".disabled = true
-		$"Swing Box/right".disabled = true
+		$hitbox/CollisionShape2D.disabled = true
 		
 		elapsed_seconds += delta
 		if elapsed_seconds > despawn_time:
@@ -77,17 +75,7 @@ func damage(amount):
 	_set_health(health - amount)
 
 
-func _on_Range_body_entered(body):
-	if "Player" in body.name:
-		if look == 0:
-			
-			$AnimatedSprite.play("Attack")
-			$"Swing Box/right".disabled = false
-		else:
-			#$AnimatedSprite.flip_h
-			$AnimatedSprite.play("Death")
-			$"Swing Box/left".disabled = false
 
-func _on_Swing_Box_body_entered(body):
+func _on_hitbox_body_entered(body):
 	if "Player" in body.name:
 		body.damage(1)
