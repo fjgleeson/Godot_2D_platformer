@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Levels/Level 0/Level 0.gd" type="Script" id=1]
+[ext_resource path="res://Tile/Test_Area/tempFloor.tres" type="TileSet" id=2]
+[ext_resource path="res://Samurai_player/Samurai_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy/Fire Worm/Fire Worm Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy/Skeleton/Skeleton Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Slime/Slime Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/PauseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/Bat/Bat Enemy.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1671.59, 69.5625 )
+
+[node name="Level 0" type="Node2D"]
+position = Vector2( 377, 26 )
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -63310282, 0, 0, -63113674, 0, 0, -62917066, 0, 0, -62720458, 0, 0, -62523850, 0, 0, -62327242, 0, 0, -62261706, 0, 0, -62261670, 0, 0, -62261626, 0, 0, -62261578, 0, 0, -62065098, 0, 0, -62065090, 0, 0, -62065082, 0, 0, -62065074, 0, 0, -62065066, 0, 0, -62065058, 0, 0, -62065050, 0, 0, -62065042, 0, 0, -62065034, 0, 0, -62065026, 0, 0, -62065018, 0, 0, -62065010, 0, 0, -62065002, 0, 0, -62064994, 0, 0, -62064986, 0, 0, -62064978, 0, 0, -62064962, 0, 0, -62064954, 0, 0, -62064946, 0, 0, -62064938, 0, 0, -62064930, 0, 0, -62064914, 0, 0, -62064906, 0, 0, -62064898, 0, 0, -62064890, 0, 0, -62064882, 0, 0, -62064874, 0, 0, -61868490, 0, 0, -61868322, 0, 0, -61868306, 0, 0, -61671882, 0, 0, -61671714, 0, 0, -61671698, 0, 0, -61475274, 0, 0, -61475098, 0, 0, -61278666, 0, 0, -61082058, 0, 0, -60885450, 0, 0, -60688842, 0, 0, -60492234, 0, 0, -60295626, 0, 0, -60099018, 0, 0, -327700, 0, 0, -393180, 0, 0, -131092, 0, 0, -196572, 0, 0, 65516, 0, 0, 36, 0, 0, 262108, 0, 0, 262116, 0, 0, 262124, 0, 0, 262132, 0, 0, 262140, 0, 0, 196612, 0, 0, 196620, 0, 0, 196628, 0, 0, 196636, 0, 0, 196644, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -79835, -30373 )
+
+[node name="PauseMenu" parent="Player" instance=ExtResource( 8 )]
+visible = false
+margin_left = -42.0
+margin_top = 11.0
+margin_right = -42.0
+margin_bottom = 11.0
+
+[node name="Fire Worm Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( -77312, -30283 )
+
+[node name="Slime Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( -78663, -30289 )
+
+[node name="Skeleton Enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( -73629, -30291 )
+
+[node name="Death Zone" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Death Zone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Zone/Area2D"]
+position = Vector2( -72606.6, -29967 )
+shape = SubResource( 1 )
+
+[node name="Skeleton Enemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -78805, -30395 )
+
+[node name="Fire Worm Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -78007, -30369 )
+
+[node name="Slime Enemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -75577, -30284 )
+
+[node name="Fire Worm Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -78630, -30364 )
+
+[node name="Bat Enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( -78918, -30603 )
+
+[connection signal="body_shape_entered" from="Death Zone/Area2D" to="." method="_on_Area2D_body_shape_entered"]

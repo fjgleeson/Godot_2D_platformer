@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/synth_wave_alex.mp3-82b4bf512ca912d83a6a8b7640e82eb1.mp3str"
+
+[deps]
+
+source_file="res://Levels/level1/synth_wave_alex.mp3"
+dest_files=[ "res://.import/synth_wave_alex.mp3-82b4bf512ca912d83a6a8b7640e82eb1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
