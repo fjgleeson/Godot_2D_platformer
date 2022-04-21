@@ -54,7 +54,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "The Wandering Samurai who decided to clear the Forest"
 align = 1
-percent_visible = -0.0222222
 __meta__ = {
 "_edit_use_anchors_": false
 }
