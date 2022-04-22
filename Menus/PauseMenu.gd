@@ -25,4 +25,5 @@ func _on_Resume_pressed():
 
 
 func _on_Exit_pressed():
-	get_tree().quit()
+	self.is_paused = false
+	get_tree().change_scene("res://Menus/Menu.tscn")
