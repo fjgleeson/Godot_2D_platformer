@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-footsteps-in-woods-loop-533.wav-fb918683f260928c5e0d315ea958d7b4.sample"
+
+[deps]
+
+source_file="res://Samurai_player/soundEffects/mixkit-footsteps-in-woods-loop-533.wav"
+dest_files=[ "res://.import/mixkit-footsteps-in-woods-loop-533.wav-fb918683f260928c5e0d315ea958d7b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mixkit-sword-slash-swoosh-1476.mp3-d49336ec362b18b7be9aacdb3d220881.mp3str"
+
+[deps]
+
+source_file="res://Samurai_player/soundEffects/mixkit-sword-slash-swoosh-1476.mp3"
+dest_files=[ "res://.import/mixkit-sword-slash-swoosh-1476.mp3-d49336ec362b18b7be9aacdb3d220881.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Wilhelm_Scream.mp3-866f73c1f94dfe2d8de3a46c9d550883.mp3str"
+
+[deps]
+
+source_file="res://Samurai_player/soundEffects/Wilhelm_Scream.mp3"
+dest_files=[ "res://.import/Wilhelm_Scream.mp3-866f73c1f94dfe2d8de3a46c9d550883.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
