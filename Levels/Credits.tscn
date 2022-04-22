@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/level1/CreditsImage.jpg" type="Texture" id=1]
 [ext_resource path="res://Levels/Credits.gd" type="Script" id=2]
+[ext_resource path="res://Menus/times new roman.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Menus/ChiKareGo2.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 51
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 46
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 31
+font_data = ExtResource( 3 )
 
 [node name="Credits" type="Node2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 449.0, 1424.0 ]
+}
 
 [node name="Control" type="Control" parent="."]
 margin_right = 1026.0
@@ -14,6 +35,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 anchor_left = 1.058
 anchor_top = 1.102
 anchor_right = 1.058
@@ -27,11 +49,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 1927.0
+margin_bottom = 1087.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 457.0
+margin_top = 95.0
+margin_right = 1421.0
+margin_bottom = 248.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "The Wandering Samurai who decided to clear the Forest
+
+                       of the Demon King's Minions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 865.0
+margin_top = 245.0
+margin_right = 1204.0
+margin_bottom = 438.0
+custom_fonts/font = SubResource( 2 )
+text = "(Demo)"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_left = 299.0
-margin_top = 482.0
-margin_right = 380.0
-margin_bottom = 502.0
+margin_left = 470.0
+margin_top = 888.0
+margin_right = 551.0
+margin_bottom = 908.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,5 +92,33 @@ __meta__ = {
 margin_right = 81.0
 margin_bottom = 20.0
 text = "Back"
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = 969.0
+margin_top = 429.0
+margin_right = 1446.0
+margin_bottom = 976.0
+custom_fonts/font = SubResource( 3 )
+text = "Fire Worm  Luizemelo
+Slime Admurin
+Skeleton Luizmelo
+Martial Hero Luizemelo
+Bat Admurin
+Pebble Admurin
+Music Alex McCulloch
+Sound effects Mixkit
+Background Saukgp
+Tile set Aamatniekss"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control"]
+margin_left = 880.0
+margin_top = 315.0
+margin_right = 1408.0
+margin_bottom = 350.0
+custom_fonts/font = SubResource( 4 )
+text = "by Frankie Glesson and Matthew Jones"
 
 [connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_Button_pressed"]

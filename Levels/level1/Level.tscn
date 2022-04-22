@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/level1/AllTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Levels/level1/Background.png" type="Texture" id=2]
@@ -8,11 +8,20 @@
 [ext_resource path="res://Enemy/Bat/Bat Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy/Slime/Slime Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/level1/synth_wave_alex.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Menus/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/level1/Level.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 414.25, 532 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7256.5, 30 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 45.5, 19 )
+
 [node name="World" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 0.798
@@ -32,6 +41,13 @@ tile_data = PoolIntArray( 1376655, 0, 0, 1376656, 0, 0, 1376657, 0, 0, 1441864, 
 
 [node name="Samurai_Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 669, 876 )
+
+[node name="PauseMenu" parent="Samurai_Player" instance=ExtResource( 9 )]
+visible = false
+margin_left = -31.0
+margin_top = 5.0
+margin_right = -31.0
+margin_bottom = 5.0
 
 [node name="Fire Worm Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2957, 945 )
@@ -76,7 +92,7 @@ position = Vector2( 8207, 993 )
 [node name="Slime Enemy3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 7210, 959 )
 
-[node name="Fire Worm" parent="." instance=ExtResource( 4 )]
+[node name="Fire Worm Enemy3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 10657, 989 )
 
 [node name="Bat Enemy3" parent="." instance=ExtResource( 6 )]
@@ -95,3 +111,27 @@ shape = SubResource( 1 )
 stream = ExtResource( 8 )
 volume_db = -17.333
 autoplay = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 7255.5, 1120 )
+shape = SubResource( 2 )
+
+[node name="End" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2( 12816, 651 )
+shape = SubResource( 3 )
+
+[node name="Bat Enemy5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12342, 656 )
+
+[node name="Bat Enemy6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12620, 576 )
+
+[node name="Bat Enemy7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12040, 738 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="End" to="." method="_on_End_body_entered"]
